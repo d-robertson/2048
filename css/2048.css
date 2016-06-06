@@ -46,9 +46,45 @@ button{
 }
 
 .two{
-  background-color: blue;
+  background-color: #99CCCC;
 }
 
 .four{
+  background-color: #CCCCE5;
+}
 
+.eight{
+  background-color: #004C66;
+}
+
+.sixteen{
+  background-color: #CC9999;
+}
+
+.thirty-two{
+  background-color: #CCE5CC;
+}
+
+.sixty-four{
+  background-color: #CCE5E5;
+}
+
+.one-twenty-eight{
+  background-color: #664C4C;
+}
+
+.two-fifty-six{
+  background-color: #4C4C66;
+}
+
+.five-twelve{
+  background-color: #E54C4C;
+}
+
+.ten-twenty-four{
+  background-color: #4C667F;
+}
+
+.twenty-fourty-eight{
+  background-color: #66CCE5;
 }
