@@ -135,45 +135,45 @@ $(document).ready(function() {
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++){
           //if value in index 1
-          if($.trim(board[i][1].text()).length > 0 &&
-            $.trim(board[i][0].text()).length === 0) {
-              board[i][0].text(board[i][1].text());
-              board[i][1].text('');
+          if($.trim(board[1][j].text()).length > 0 &&
+            $.trim(board[0][j].text()).length === 0) {
+              board[0][j].text(board[1][j].text());
+              board[1][j].text('');
           }
           //if value in index 2
-          if($.trim(board[i][2].text()).length > 0 &&
-            $.trim(board[i][1].text()).length === 0) {
+          if($.trim(board[2][j].text()).length > 0 &&
+            $.trim(board[1][j].text()).length === 0) {
               //if value in index 2 and value 0 in index 0 or 1
-              if($.trim(board[i][0].text()).length === 0) {
-                board[i][0].text(board[i][2].text());
-                board[i][2].text('');
+              if($.trim(board[0][j].text()).length === 0) {
+                board[0][j].text(board[2][j].text());
+                board[2][j].text('');
               } else { //if no value in index 1 but yes in 0
-                board[i][1].text(board[i][2].text());
-                board[i][2].text('');
+                board[1][j].text(board[2][j].text());
+                board[2][j].text('');
               }
           }
           //if value in index 3, value 0 in 2
-          if($.trim(board[i][3].text()).length > 0 &&
-            $.trim(board[i][2].text()).length === 0) {
+          if($.trim(board[3][j].text()).length > 0 &&
+            $.trim(board[2][j].text()).length === 0) {
               //value in index 3, value 0 in 2 and 1
-              if($.trim(board[i][1].text()).length === 0) {
+              if($.trim(board[1][j].text()).length === 0) {
                 //value in index 3, value 0 in 1 2 and 0
-                if($.trim(board[i][0].text()).length === 0){
-                  board[i][0].text(board[i][3].text());
-                  board[i][3].text('');
+                if($.trim(board[0][j].text()).length === 0){
+                  board[0][j].text(board[3][j].text());
+                  board[3][j].text('');
                   //value in 0
                 }
                 else{
-                  board[i][1].text(board[i][3].text());
-                  board[i][3].text('');
+                  board[1][j].text(board[3][j].text());
+                  board[3][j].text('');
                 }
               }
-            board[i][2].text(board[i][3].text());
-            board[i][3].text('');
+            board[2][j].text(board[3][j].text());
+            board[3][j].text('');
           }//
         } // end second for loop
       } //  end first for loop
-    } //  end Keyleft Code
+    } //  end KeyUp Code
 
     //KeyRight Code
     else if(keyDirection === 39){
@@ -206,17 +206,54 @@ $(document).ready(function() {
                   board[i][2].text(board[i][0].text());
                   board[i][0].text('');
                 }
-              }
-            board[i][1].text(board[i][0].text());
-            board[i][0].text('');
-          }//
+            }
+          board[i][1].text(board[i][0].text());
+          board[i][0].text('');
+          }
         } // end second for loop
       } //  end first for loop
     } //  end KeyRight Code
 
     //keyDown
     else if(keyDirection === 40){
-      console.log(40);
+        for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++){
+          if($.trim(board[2][j].text()).length > 0 &&
+            $.trim(board[3][j].text()).length === 0) {
+              board[3][j].text(board[2][j].text());
+              board[2][j].text('');
+          }
+          if($.trim(board[1][j].text()).length > 0 &&
+            $.trim(board[2][j].text()).length === 0) {
+              //if value in index 2 and value 0 in index 0 or 1
+              if($.trim(board[3][j].text()).length === 0) {
+                board[3][j].text(board[1][j].text());
+                board[1][j].text('');
+              } else { //if no value in index 1 but yes in 0
+                board[2][j].text(board[1][j].text());
+                board[1][j].text('');
+              }
+          }
+          if($.trim(board[0][j].text()).length > 0 &&
+            $.trim(board[1][j].text()).length === 0) {
+              //value in index 3, value 0 in 2 and 1
+              if($.trim(board[2][j].text()).length === 0) {
+                //value in index 3, value 0 in 1 2 and 0
+                if($.trim(board[3][j].text()).length === 0){
+                  board[3][j].text(board[0][j].text());
+                  board[0][j].text('');
+                  //value in 0
+                }
+                else{
+                  board[2][j].text(board[0][j].text());
+                  board[0][j].text('');
+                }
+              }
+            board[1][j].text(board[0][j].text());
+            board[0][j].text('');
+          }
+        } // end second for loop
+      } //  end first for loop
     } // end of keyDown
 
   color(); //run the color function
