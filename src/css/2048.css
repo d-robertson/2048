@@ -15,13 +15,7 @@ body{
 button{
   height: 20px;
   margin: 0 0 0 40px;
-}
-
-.head{
-  display:flex;
-  flex-direction: row;
-  justify-content:center;
-  align-items:center;
+  float:right;
 }
 
 #gameBoard{
@@ -35,10 +29,26 @@ button{
   display:flex;
   justify-content:center;
 }
-.default{
-  background-color: lightgrey;
+
+.square{
   height:80px;
   width:80px;
   border-radius: 10px;
   margin: 10px 10px;
+  text-align:center;
+  color:white;
+  line-height: 80px;
+  font-size: 40px;
+}
+
+.default{
+  background-color: lightgrey;
+}
+
+.two{
+  background-color: blue;
+}
+
+.four{
+
 }
