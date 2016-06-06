@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <title>2048</title>
+  <link rel="stylesheet" type="text/css" href="css/2048.css">
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <div class="head">
+    <h1>Let's Play 2048!<button type="reset">Reset</button></h1>
+  </div>
+  <div id="gameBoard">
+    <div id="row1" class="row">
+      <div id="a" class="square default">
+      </div>
+      <div id="b" class="square default">
+      </div>
+      <div id="c" class="square default">
+      </div>
+      <div id="d" class="square default">
+      </div>
+    </div>
+    <div id="row2" class="row">
+      <div id="e" class="square default">
+      </div>
+      <div id="f" class="square default">
+      </div>
+      <div id="g" class="square default">
+      </div>
+      <div id="h" class="square default">
+      </div>
+    </div>
+    <div id="row3" class="row">
+      <div id="i" class="square default">
+      </div>
+      <div id="j" class="square default">
+      </div>
+      <div id="k" class="square default">
+      </div>
+      <div id="l" class="square default">
+      </div>
+    </div>
+    <div id="row4" class="row">
+      <div id="m" class="square default">
+      </div>
+      <div id="n" class="square default">
+      </div>
+      <div id="o" class="square default">
+      </div>
+      <div id="p" class="square default">
+      </div>
+    </div>
+  </div>
+  <h2>Use the arow keys to move the squares.  Try to combine like squares to double them.</h2>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/2048.js"></script>
 </body>
 </html>
