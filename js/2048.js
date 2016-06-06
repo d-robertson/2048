@@ -16,10 +16,12 @@ $(document).ready(function() {
 //         }
 //       }
 
-/**/  board[0][1].text(2);
-      board[1][2].text(2);
-      board[2][2].text(2);
-      board[3][3].text(2);
+/**/  board[0][3].text(2);
+      board[0][1].text(2);
+      board[0][0].text(2);
+      board[2][1].text(2);
+      board[3][1].text(2);
+      board[3][2].text(2);
   console.log(board[0][1].text());
 
 
@@ -82,52 +84,153 @@ $(document).ready(function() {
   // Keydown listener
   $(document).keydown(function(e){
     var keyDirection = (e.keyCode);
-/**/    console.log(keyDirection);
-
+    //Check for empty spaces
     //KeyLeft Code
     if(keyDirection === 37){
-/**/      console.log(37);
-      //checking for empty spaces
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++){
-/**/      console.log(board[i][j].text());
-        if($.trim(board[i][0].text()).length == 0 &&
-           $.trim(board[i][1].text()).length == 0 &&
-           $.trim(board[i][2].text()).length == 0 &&
-           board[i][3].text().length > 0) {
-          board[i][0].text(board[i][3].text());
-          board[i][3].text('');
-        }
-        if($.trim(board[i][0].text()).length == 0 &&
-           $.trim(board[i][1].text()).length == 0 &&
-           board[i][2].text().length > 0) {
-          board[i][0].text(board[i][2].text());
-          board[i][2].text('');
-        }
-        if($.trim(board[i][0].text()).length == 0 &&
-           board[i][1].text().length > 0) {
-          board[i][0].text(board[i][1].text());
-          board[i][1].text('');
-        }
-        color();
-        }
-      }
-    }
+          //if value in index 1
+          if($.trim(board[i][1].text()).length > 0 &&
+            $.trim(board[i][0].text()).length === 0) {
+              board[i][0].text(board[i][1].text());
+              board[i][1].text('');
+          }
+          //if value in index 2
+          if($.trim(board[i][2].text()).length > 0 &&
+            $.trim(board[i][1].text()).length === 0) {
+              //if value in index 2 and value 0 in index 0 or 1
+              if($.trim(board[i][0].text()).length === 0) {
+                board[i][0].text(board[i][2].text());
+                board[i][2].text('');
+              } else { //if no value in index 1 but yes in 0
+                board[i][1].text(board[i][2].text());
+                board[i][2].text('');
+              }
+          }
+          //if value in index 3, value 0 in 2
+          if($.trim(board[i][3].text()).length > 0 &&
+            $.trim(board[i][2].text()).length === 0) {
+              //value in index 3, value 0 in 2 and 1
+              if($.trim(board[i][1].text()).length === 0) {
+                //value in index 3, value 0 in 1 2 and 0
+                if($.trim(board[i][0].text()).length === 0){
+                  board[i][0].text(board[i][3].text());
+                  board[i][3].text('');
+                  //value in 0
+                }
+                else{
+                  board[i][1].text(board[i][3].text());
+                  board[i][3].text('');
+                }
+              }
+            board[i][2].text(board[i][3].text());
+            board[i][3].text('');
+          }//
+        } // end second for loop
+      } //  end first for loop
+    } //  end Keyleft Code
 
     //KeyUp Code
     else if(keyDirection === 38){
-      console.log(38);
-    }
+      for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++){
+          //if value in index 2nd row
+          if($.trim(board[1][j].text()).length > 0 &&
+            $.trim(board[0][j].text()).length === 0) {
+              board[0][j].text(board[1][j].text());
+              board[1][j].text('');
+          }
+          //if value in index 3rd row
+          if($.trim(board[2][j].text()).length > 0 &&
+            $.trim(board[1][j].text()).length === 0) {
+              //if value in index 2 and value 0 in index 0 or 1
+              if($.trim(board[0][j].text()).length === 0) {
+                board[0][j].text(board[2][j].text());
+                board[2][j].text('');
+              } else { //if no value in index 1 but yes in 0
+                board[1][j].text(board[2][j].text());
+                board[2][j].text('');
+              }
+          }
+          //if value in index 4th row
+          if($.trim(board[3][j].text()).length > 0 &&
+            $.trim(board[2][j].text()).length === 0) {
+              //value in index 3, value 0 in 2 and 1
+              if($.trim(board[1][j].text()).length === 0) {
+                //value in index 3, value 0 in 1 2 and 0
+                if($.trim(board[0][j].text()).length === 0){
+                  board[0][j].text(board[3][j].text());
+                  board[3][j].text('');
+                  //value in 0
+                } else{
+                  board[1][j].text(board[3][j].text());
+                  board[3][j].text('');
+                }
+              }
+              else {
+                board[2][j].text(board[3][j].text());
+                board[3][j].text('');
+              }
+          }
+        } // end second for loop
+      } //  end first for loop
+    } //  end Keyleft Code
+
     //KeyRight Code
     else if(keyDirection === 39){
       console.log(39);
-    }
+      for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++){
+          //if value in index 2
+          if($.trim(board[i][2].text()).length > 0 &&
+            $.trim(board[i][3].text()).length === 0) {
+              board[i][3].text(board[i][2].text());
+              board[i][2].text('');
+          }
+          //if value in index 1
+          if($.trim(board[i][1].text()).length > 0 &&
+            $.trim(board[i][2].text()).length === 0) {
+              //if value in index 2 and value 0 in index 0 or 1
+              if($.trim(board[i][3].text()).length === 0) {
+                board[i][3].text(board[i][1].text());
+                board[i][1].text('');
+              } else { //if no value in index 1 but yes in 0
+                board[i][2].text(board[i][1].text());
+                board[i][1].text('');
+              }
+          }
+          //if value in index 0, value 0 in 1
+          if($.trim(board[i][0].text()).length > 0 &&
+            $.trim(board[i][1].text()).length === 0) {
+              if($.trim(board[i][2].text()).length === 0) {
+                //value in index 3, value 0 in 1 2 and 0
+                if($.trim(board[i][3].text()).length === 0){
+                  board[i][3].text(board[i][0].text());
+                  board[i][0].text('');
+                  //value in 0
+                } else{
+                  board[i][2].text(board[i][0].text());
+                  board[i][0].text('');
+                }
+              }
+              else {
+                board[i][1].text(board[i][0].text());
+                board[i][0].text('');
+              }
+          }
+        } // end second for loop
+      } //  end first for loop
+    } //  end KeyRight Code
+
+    //keyDown
     else if(keyDirection === 40){
       console.log(40);
-    }
+    } // end of keyDown
 
-  });
+  color(); //run the color function
+
+  }); //end of click event listener
 
 
 
-});
+}); //end of document ready
