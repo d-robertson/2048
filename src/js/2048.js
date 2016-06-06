@@ -8,22 +8,15 @@ $(document).ready(function() {
     [$('#m'), $('#n'), $('#o'), $('#p')]
   ];
 
-  board[0][0].text('');
-  board[0][1].text('');
-  board[0][2].text('');
-  board[0][3].text('');
-  board[1][0].text('');
-  board[1][1].text('');
-  board[1][2].text('');
-  board[1][3].text('');
-  board[2][0].text('');
-  board[2][1].text('');
-  board[2][2].text('');
-  board[2][3].text('');
-  board[3][0].text('');
-  board[3][1].text('');
-  board[3][2].text('');
-  board[3][3].text('');
+  // set all starting values to ''
+  function startingValues() {
+    for (var y = 0; y < 4; y++){
+      for(var z = 0; z <4; z++){
+      board[y][z].text('');
+      console.log(board[y][z].text());
+      }
+    }
+  }
 
 var start1 = Math.floor(Math.random()*16);
 var start2 = Math.floor(Math.random()*16);
@@ -97,6 +90,8 @@ var start2 = Math.floor(Math.random()*16);
       $(board[3][3]).addClass('two');
     }
   }
+
+  startingValues();
 
   startGame();
 
@@ -201,13 +196,6 @@ var start2 = Math.floor(Math.random()*16);
             board[i][3].text('');
           }//
           // start of checking side by side numbers
-
-          // if (board[i][0].text() === board[i][1].text() && board[i][1].text() === board[i][2].text() && board[i][2].text() === board[i][3].text()){
-          //   board[i][0].text(board[i][0].text()*2);
-          //   board[i][1].text(board[i][2].text()*2);
-          //   board[i][2].text('');
-          //   board[i][3].text('');
-          // }
           if (board[i][0].text() === board[i][1].text() && board[i][0].text() !== '') {
             board[i][0].text(board[i][0].text()*2);
             board[i][1].text('');
