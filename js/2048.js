@@ -17,6 +17,9 @@ $(document).ready(function() {
 //       }
 
 /**/  board[0][1].text(2);
+      board[1][2].text(2);
+      board[2][2].text(2);
+      board[3][3].text(2);
   console.log(board[0][1].text());
 
 
@@ -24,6 +27,10 @@ $(document).ready(function() {
   function color(){
     for(var b = 0; b < 4; b++){
     for (var c = 0; c < 4; c++){
+      if(board[b][c].text()==='') {
+        $(board[b][c]).addClass('default');
+        $(board[b][c]).removeClass('two four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight')
+      }
       if(board[b][c].text() === '2') {
         $(board[b][c]).addClass('two');
         $(board[b][c]).removeClass('default');
@@ -82,25 +89,25 @@ $(document).ready(function() {
 /**/      console.log(37);
       //checking for empty spaces
       for (var i = 0; i < 4; i++) {
-        for (var j = 0; j <4; j++){
+        for (var j = 0; j < 4; j++){
 /**/      console.log(board[i][j].text());
-        if($.trim(board[0][0].text()).length == 0 &&
-           $.trim(board[0][1].text()).length == 0 &&
-           $.trim(board[0][2].text()).length == 0 &&
-           board[0][3].text().length > 0) {
-          board[0][0].text(board[0][3].text());
-          board[0][3].text('');
+        if($.trim(board[i][0].text()).length == 0 &&
+           $.trim(board[i][1].text()).length == 0 &&
+           $.trim(board[i][2].text()).length == 0 &&
+           board[i][3].text().length > 0) {
+          board[i][0].text(board[i][3].text());
+          board[i][3].text('');
         }
-        if($.trim(board[0][0].text()).length == 0 &&
-           $.trim(board[0][1].text()).length == 0 &&
-           board[0][2].text().length > 0) {
-          board[0][0].text(board[0][2].text());
-          board[0][2].text('');
+        if($.trim(board[i][0].text()).length == 0 &&
+           $.trim(board[i][1].text()).length == 0 &&
+           board[i][2].text().length > 0) {
+          board[i][0].text(board[i][2].text());
+          board[i][2].text('');
         }
-        if($.trim(board[0][0].text()).length == 0 &&
-           board[0][1].text().length > 0) {
-          board[0][0].text(board[0][1].text());
-          board[0][1].text('');
+        if($.trim(board[i][0].text()).length == 0 &&
+           board[i][1].text().length > 0) {
+          board[i][0].text(board[i][1].text());
+          board[i][1].text('');
         }
         color();
         }
