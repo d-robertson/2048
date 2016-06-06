@@ -8,25 +8,97 @@ $(document).ready(function() {
     [$('#m'), $('#n'), $('#o'), $('#p')]
   ];
 
-/**/
-  board[0][0].text(2);
-  board[0][1].text(2);
-  board[0][2].text(2);
-  board[0][3].text(2);
-  board[1][0].text(2);
-  board[1][1].text(2);
-  board[1][2].text(4);
-  board[1][3].text(4);
+  board[0][0].text('');
+  board[0][1].text('');
+  board[0][2].text('');
+  board[0][3].text('');
+  board[1][0].text('');
+  board[1][1].text('');
+  board[1][2].text('');
+  board[1][3].text('');
   board[2][0].text('');
-  board[2][1].text(256);
+  board[2][1].text('');
   board[2][2].text('');
   board[2][3].text('');
   board[3][0].text('');
-  board[3][1].text(128);
-  board[3][2].text(64);
+  board[3][1].text('');
+  board[3][2].text('');
   board[3][3].text('');
 
+var start1 = Math.floor(Math.random()*16);
+var start2 = Math.floor(Math.random()*16);
 
+  function startGame(){
+    if(start1 === start2){
+      start2 = Math.floor(Math.random()*16);
+    }
+    if (start1 === 0 || start2 === 0){
+      board[0][0].text(2);
+      $(board[0][0]).addClass('two');
+    }
+     if (start1 === 1 || start2 === 1){
+      board[0][1].text(2);
+      $(board[0][1]).addClass('two');
+    }
+     if (start1 === 2 || start2 === 2){
+      board[0][2].text(2);
+      $(board[0][2]).addClass('two');
+    }
+     if (start1 === 3 || start2 === 3){
+      board[0][3].text(2);
+      $(board[0][3]).addClass('two');
+    }
+     if (start1 === 4 || start2 === 4){
+      board[1][0].text(2);
+      $(board[1][0]).addClass('two');
+    }
+     if (start1 === 5 || start2 === 5){
+      board[1][1].text(2);
+      $(board[1][1]).addClass('two');
+    }
+     if (start1 === 6 || start2 === 6){
+      board[1][2].text(2);
+      $(board[1][2]).addClass('two');
+    }
+     if (start1 === 7 || start2 === 7){
+      board[1][3].text(2);
+      $(board[1][3]).addClass('two');
+    }
+     if (start1 === 8 || start2 === 8){
+      board[2][0].text(2);
+      $(board[2][0]).addClass('two');
+    }
+     if (start1 === 9 || start2 === 9){
+      board[2][1].text(2);
+      $(board[2][1]).addClass('two');
+    }
+     if (start1 === 10 || start2 === 10){
+      board[2][2].text(2);
+      $(board[2][2]).addClass('two');
+    }
+    if (start1 === 11 || start2 === 11){
+      board[2][3].text(2);
+      $(board[2][3]).addClass('two');
+    }
+     if (start1 === 12 || start2 === 12){
+      board[3][0].text(2);
+      $(board[3][0]).addClass('two');
+    }
+     if (start1 === 13 || start2 === 13){
+      board[3][1].text(2);
+      $(board[3][1]).addClass('two');
+    }
+     if (start1 === 14 || start2 === 14){
+      board[3][2].text(2);
+      $(board[3][2]).addClass('two');
+    }
+     if (start1 === 15 || start2 === 15){
+      board[3][3].text(2);
+      $(board[3][3]).addClass('two');
+    }
+  }
+
+  startGame();
 
   //  background color
   function color() {
@@ -129,6 +201,13 @@ $(document).ready(function() {
             board[i][3].text('');
           }//
           // start of checking side by side numbers
+
+          // if (board[i][0].text() === board[i][1].text() && board[i][1].text() === board[i][2].text() && board[i][2].text() === board[i][3].text()){
+          //   board[i][0].text(board[i][0].text()*2);
+          //   board[i][1].text(board[i][2].text()*2);
+          //   board[i][2].text('');
+          //   board[i][3].text('');
+          // }
           if (board[i][0].text() === board[i][1].text() && board[i][0].text() !== '') {
             board[i][0].text(board[i][0].text()*2);
             board[i][1].text('');
@@ -141,6 +220,7 @@ $(document).ready(function() {
             board[i][2].text(board[i][2].text()*2);
             board[i][3].text('');
           }
+
         } // end second for loop
       } //  end first for loop
     } //  end Keyleft Code
