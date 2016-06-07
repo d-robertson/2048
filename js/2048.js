@@ -95,6 +95,85 @@ var start2 = Math.floor(Math.random()*16);
 
   startGame();
 
+  function addA2(){
+    var addA2 = Math.floor(Math.random()*16);
+    console.log(addA2);
+    // for (var y = 0; y < 4; y++) {
+    //   for (var z = 0; z < 4 ; z++){
+    //     if(board[y][z] === ''){
+
+    //     } else {
+    //       addA2 = Math.floor(Math.random()*16);
+    //     }
+    //   }
+    // }
+    if (addA2 === 0 && $.trim(board[0][0].text()).length === 0) {
+      board[0][0].text(2);
+      $(board[0][0]).addClass('two');
+    }
+    if (addA2 === 1 && $.trim(board[0][1].text()).length === 0){
+      board[0][1].text(2);
+      $(board[0][1]).addClass('two');
+    }
+    if (addA2 === 2 && $.trim(board[0][2].text()).length === 0){
+      board[0][2].text(2);
+      $(board[0][2]).addClass('two');
+    }
+    if (addA2 === 3 && $.trim(board[0][3].text()).length === 0){
+      board[0][3].text(2);
+      $(board[0][3]).addClass('two');
+    }
+    if (addA2 === 4 && $.trim(board[1][0].text()).length === 0){
+      board[1][0].text(2);
+      $(board[1][0]).addClass('two');
+    }
+    if (addA2 === 5 && $.trim(board[1][1].text()).length === 0){
+      board[1][1].text(2);
+      $(board[1][1]).addClass('two');
+    }
+    if (addA2 === 6 && $.trim(board[1][2].text()).length === 0){
+      board[1][2].text(2);
+      $(board[1][2]).addClass('two');
+    }
+    if (addA2 === 7 && $.trim(board[1][3].text()).length === 0){
+      board[1][3].text(2);
+      $(board[1][3]).addClass('two');
+    }
+    if (addA2 === 8 && $.trim(board[2][0].text()).length === 0){
+      board[2][0].text(2);
+      $(board[2][0]).addClass('two');
+    }
+    if (addA2 === 9 && $.trim(board[2][1].text()).length === 0){
+      board[2][1].text(2);
+      $(board[2][1]).addClass('two');
+    }
+    if (addA2 === 10 && $.trim(board[2][2].text()).length === 0){
+      board[2][2].text(2);
+      $(board[2][2]).addClass('two');
+    }
+    if (addA2 === 11 && $.trim(board[2][3].text()).length === 0){
+      board[2][3].text(2);
+      $(board[2][3]).addClass('two');
+    }
+    if (addA2 === 12 && $.trim(board[3][0].text()).length === 0){
+      board[3][0].text(2);
+      $(board[3][0]).addClass('two');
+    }
+    if (addA2 === 13 && $.trim(board[3][1].text()).length === 0){
+      board[3][1].text(2);
+      $(board[3][1]).addClass('two');
+    }
+    if (addA2 === 14 && $.trim(board[3][2].text()).length === 0){
+      board[3][2].text(2);
+      $(board[3][2]).addClass('two');
+    }
+    if (addA2 === 15 && $.trim(board[3][3].text()).length === 0){
+      board[3][3].text(2);
+      $(board[3][3]).addClass('two');
+    }
+    addA2 = Math.floor(Math.random()*16);
+  }
+
   //  background color
   function color() {
     for (var b = 0; b < 4; b++) {
@@ -372,7 +451,7 @@ var start2 = Math.floor(Math.random()*16);
         } // end second for loop
       } //  end first for loop
     } // end of keyDown
-
+  addA2();
   color(); //run the color function
 
   }); // end of click event listener
