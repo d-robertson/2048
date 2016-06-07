@@ -19,6 +19,14 @@ $(document).ready(function() {
     }
   }
 
+// function test() {
+//   if(!$(board[0][0]).hasClass('stop')){
+//     console.log('stop');
+//   }
+// }
+
+// test();
+
 var start1 = Math.floor(Math.random()*16);
 var start2 = Math.floor(Math.random()*16);
 
@@ -183,15 +191,22 @@ var start2 = Math.floor(Math.random()*16);
       $.trim(board[3][1].text()).length > 0 &&
       $.trim(board[3][2].text()).length > 0 &&
       $.trim(board[3][3].text()).length > 0) {
-      alert("The game is over!");
+      alert("The game is over!  Click to play again!");
+      startingValues();
+      startGame();
     }
 
+// get key direction
     var keyDirection = (e.keyCode);
-    // Check for empty spaces
-    // KeyLeft Code
+
+// KeyLeft Code
     if (keyDirection === 37) {
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
+          // remove any 'stop' classes
+          if($(board[i][j]).hasClass('stop')){
+            $(board[i][j]).removeClass('stop');
+           }
           // if value in index 1
           if ($.trim(board[i][1].text()).length > 0 &&
             $.trim(board[i][0].text()).length === 0) {
@@ -229,9 +244,10 @@ var start2 = Math.floor(Math.random()*16);
             board[i][3].text('');
           }//
           // start of checking side by side numbers
-          if (board[i][0].text() === board[i][1].text() && board[i][0].text() !== '') {
+          if (board[i][0].text() === board[i][1].text() && board[i][0].text() !== '' && !$(board[i][0]).hasClass('stop')) {
             board[i][0].text(board[i][0].text()*2);
             board[i][1].text('');
+            $(board[i][0]).addClass('stop');
           }
           if (board[i][1].text() === board[i][2].text() && board[i][1].text() !== '') {
             board[i][1].text(board[i][1].text()*2);
@@ -252,6 +268,10 @@ var start2 = Math.floor(Math.random()*16);
     else if (keyDirection === 38) {
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
+          // remove any 'stop' classes
+            if($(board[i][j]).hasClass('stop')){
+              $(board[i][j]).removeClass('stop');
+            }
           // if value in index 1
           if ($.trim(board[1][j].text()).length > 0 &&
             $.trim(board[0][j].text()).length === 0) {
@@ -290,9 +310,10 @@ var start2 = Math.floor(Math.random()*16);
             board[3][j].text('');
           }//
           // start of checking side by side numbers
-          if (board[0][j].text() === board[1][j].text() && board[0][j].text() !== '') {
+          if (board[0][j].text() === board[1][j].text() && board[0][j].text() !== '' && !$(board[0][j]).hasClass('stop')) {
             board[0][j].text(board[0][j].text()*2);
             board[1][j].text('');
+            $(board[0][j]).addClass('stop');
           }
           if (board[1][j].text() === board[2][j].text() && board[1][j].text() !== '') {
             board[1][j].text(board[1][j].text()*2);
@@ -312,6 +333,10 @@ var start2 = Math.floor(Math.random()*16);
     else if (keyDirection === 39){
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
+           // remove any 'stop' classes
+            if($(board[i][j]).hasClass('stop')){
+              $(board[i][j]).removeClass('stop');
+            }
           if ($.trim(board[i][2].text()).length > 0 &&
             $.trim(board[i][3].text()).length === 0) {
               board[i][3].text(board[i][2].text());
@@ -343,9 +368,10 @@ var start2 = Math.floor(Math.random()*16);
           board[i][0].text('');
           }
           // start of checking side by side numbers
-          if (board[i][3].text() === board[i][2].text() && board[i][3].text() !== '') {
+          if (board[i][3].text() === board[i][2].text() && board[i][3].text() !== '' && !$(board[i][3]).hasClass('stop')) {
             board[i][3].text(board[i][3].text()*2);
             board[i][2].text('');
+            $(board[i][3]).addClass('stop');
           }
           if (board[i][2].text() === board[i][1].text() && board[i][2].text() !== '') {
             board[i][2].text(board[i][2].text()*2);
@@ -365,6 +391,10 @@ var start2 = Math.floor(Math.random()*16);
     else if (keyDirection === 40){
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
+            // remove any 'stop' classes
+            if($(board[i][j]).hasClass('stop')){
+              $(board[i][j]).removeClass('stop');
+            }
           if ($.trim(board[2][j].text()).length > 0 &&
             $.trim(board[3][j].text()).length === 0) {
               board[3][j].text(board[2][j].text());
@@ -396,9 +426,10 @@ var start2 = Math.floor(Math.random()*16);
             board[0][j].text('');
           }
           // start of checking side by side numbers
-          if (board[3][j].text() === board[2][j].text() && board[3][j].text() !== '') {
+          if (board[3][j].text() === board[2][j].text() && board[3][j].text() !== '' && !$(board[3][j]).hasClass('stop')) {
             board[3][j].text(board[3][j].text()*2);
             board[2][j].text('');
+            $(board[3][j]).addClass('stop');
           }
           if (board[2][j].text() === board[1][j].text() && board[2][j].text() !== '') {
             board[2][j].text(board[2][j].text()*2);
