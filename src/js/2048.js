@@ -127,17 +127,18 @@ function startGame(){
       startingValues();
       startGame();
     }
+
     //remove any 'stop' classes
     for (var i = 0; i < 4; i ++) {
       for (var j = 0; j < 4; j++) {
         $(board[i][j]).removeClass('stop');
-        console.log('removed stop')
       }
     }
-// get key direction
+
+    // get key direction
     var keyDirection = (e.keyCode);
 
-// KeyLeft Code
+    // KeyLeft Code
     if (keyDirection === 37) {
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
@@ -193,10 +194,11 @@ function startGame(){
             board[i][3].text('');
             $(board[i][2]).addClass('stop');
           }
-
         } // end second for loop
       } //  end first for loop
-      color(); //run the color function
+      // run the color function
+      color();
+      //get a new 2 square
       anotherSquare();
     } //  end Keyleft Code
 
@@ -253,7 +255,7 @@ function startGame(){
             $(board[1][j]).addClass('stop');
           }
           if (board[2][j].text() === board[3][j].text() && board[2][j].text() !== '' && !$(board[3][j]).hasClass('stop')) {
-            board[2][j].text(board[i][2].text()*2);
+            board[2][j].text(board[2][j].text()*2);
             board[3][j].text('');
             $(board[2][j]).addClass('stop');
           }
@@ -381,6 +383,5 @@ function startGame(){
     startingValues();
     startGame();
   });
-
 
 }); // end of document ready
