@@ -13,12 +13,32 @@ body{
 }
 
 button{
-  height: 20px;
-  margin: 0 0 0 40px;
-  float:right;
+  position:relative;
+  left: 184px;
+  bottom: 28px;
+  font-family: 'Work Sans', sans-serif;
 }
 
-#gameBoard{
+
+h1{
+  text-align:center;
+  margin: 0 auto;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h2{
+  width: 480px;
+  text-align:justify;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.foo{
+  font-family: 'Great Vibes', cursive;
+  font-weight: 100;
+  font-size: 100px;
+}
+
+.gameBoard{
   background-color:darkgrey;
   border-radius: 10px;
   width:420px;

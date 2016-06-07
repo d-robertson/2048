@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>2048</title>
+  <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:100' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/2048.css">
 </head>
 <body>
-  <div class="head">
-    <h1>Let's Play 2048!<button type="reset" id="reset">Reset</button></h1>
-  </div>
-  <div id="gameBoard">
+    <h1>Let's Play <span class="foo">2048</span>!</h1>
+    <button type="reset" id="reset">Reset</button>
+  <div class="gameBoard">
     <div id="row1" class="row">
       <div id="a" class="square default">
       </div>
@@ -50,7 +51,7 @@
       </div>
     </div>
   </div>
-  <h2>Use the arow keys to move the squares.  Try to combine like squares to double them.</h2>
+  <h2>HOW TO PLAY: Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!</h2>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
   <script type="text/javascript" src="js/2048.js"></script>
 </body>
