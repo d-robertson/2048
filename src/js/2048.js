@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   var board = [
     [$('#a'), $('#b'), $('#c'), $('#d')],
     [$('#e'), $('#f'), $('#g'), $('#h')],
@@ -58,7 +59,6 @@ $(document).ready(function() {
 
   function anotherSquare() {
     if (boardFull()) return;
-
     do {
       var row = Math.floor(Math.random() * 4);
       var col = Math.floor(Math.random() * 4);
@@ -68,6 +68,7 @@ $(document).ready(function() {
     $(board[row][col]).removeClass('default');
     $(board[row][col]).addClass('two');
   }
+
   //  background color
   function color() {
     for (var b = 0; b < 4; b++) {
@@ -129,6 +130,7 @@ $(document).ready(function() {
   startGame();
   // Key listener
   $(document).keydown(function(e) {
+    e.preventDefault();
     // remove any 'stop' classes
     for (var i = 0; i < 4; i ++) {
       for (var j = 0; j < 4; j++) {
@@ -137,7 +139,6 @@ $(document).ready(function() {
     }
     // get key direction
     var keyDirection = (e.keyCode);
-
     // KeyLeft Code
     if (keyDirection === 37) {
       // Condense Boxes
@@ -552,7 +553,7 @@ $(document).ready(function() {
 
     function checkGameOver() {
       if (boardFull() && noRows() && noColumns()) {
-        alert('There are no more moves!  Try Again!');
+        swal('There are no more moves!  Try Again!');
         startingValues();
         startGame();
       }
