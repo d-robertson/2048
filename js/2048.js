@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  //  Set array to an array of objects with a key of value and number?
-
   var board = [
     [$('#a'), $('#b'), $('#c'), $('#d')],
     [$('#e'), $('#f'), $('#g'), $('#h')],
@@ -35,9 +33,7 @@ $(document).ready(function() {
   }
 
 
-  startingValues();
 
-  startGame();
 
   function boardFull() {
     if(
@@ -65,6 +61,7 @@ $(document).ready(function() {
 
   function anotherSquare() {
     if(boardFull()) return;
+
     do {
       var row = Math.floor(Math.random() * 4);
       var col = Math.floor(Math.random() * 4);
@@ -129,7 +126,11 @@ $(document).ready(function() {
       }
     }
   }
-  // Keydown listener
+
+  // Start Running the Game
+  startingValues();
+  startGame();
+  // Key listener
   $(document).keydown(function(e) {
     // remove any 'stop' classes
     for (var i = 0; i < 4; i ++) {
@@ -141,67 +142,108 @@ $(document).ready(function() {
     var keyDirection = (e.keyCode);
     // KeyLeft Code
     if (keyDirection === 37) {
+      //Condense Boxes
       for (var i = 0; i < 4; i++) {
-          // if value in index 1
-          if ($.trim(board[i][1].text()).length > 0 &&
-          $.trim(board[i][0].text()).length === 0) {
-            board[i][0].text(board[i][1].text());
-            board[i][1].text('');
-          }
-          // if value in index 2
-          if ($.trim(board[i][2].text()).length > 0 &&
-            $.trim(board[i][1].text()).length === 0) {
-              // if value in index 2 and value 0 in index 0 or 1
-            if ($.trim(board[i][0].text()).length === 0) {
-              board[i][0].text(board[i][2].text());
-              board[i][2].text('');
-            } else { // if no value in index 1 but yes in 0
-              board[i][1].text(board[i][2].text());
-              board[i][2].text('');
-            }
-          }
-          // if value in index 3, value 0 in 2
-          if ($.trim(board[i][3].text()).length > 0 &&
-            $.trim(board[i][2].text()).length === 0) {
-              // value in index 3, value 0 in 2 and 1
-            if ($.trim(board[i][1].text()).length === 0) {
-                // value in index 3, value 0 in 1 2 and 0
-              if ($.trim(board[i][0].text()).length === 0) {
-                board[i][0].text(board[i][3].text());
-                board[i][3].text('');
-                // value in 0
-              } else {
-                board[i][1].text(board[i][3].text());
-                board[i][3].text('');
-              }
-            }
-            board[i][2].text(board[i][3].text());
-            board[i][3].text('');
-          }//
-          // start of checking side by side numbers
-          if (board[i][0].text() === board[i][1].text()
-            && board[i][0].text() !== ''
-            && !$(board[i][1]).hasClass('stop')) {
-            board[i][0].text(board[i][0].text() * 2);
-            board[i][1].text('');
-            $(board[i][0]).addClass('stop');
-          }
-          if (board[i][1].text() === board[i][2].text()
-            && board[i][1].text() !== ''
-            && !$(board[i][2]).hasClass('stop')) {
-            board[i][1].text(board[i][1].text() * 2);
+        // if value in index 1
+        if ($.trim(board[i][1].text()).length > 0 &&
+        $.trim(board[i][0].text()).length === 0) {
+          board[i][0].text(board[i][1].text());
+          board[i][1].text('');
+        }
+        // if value in index 2
+        if ($.trim(board[i][2].text()).length > 0 &&
+          $.trim(board[i][1].text()).length === 0) {
+            // if value in index 2 and value 0 in index 0 or 1
+          if ($.trim(board[i][0].text()).length === 0) {
+            board[i][0].text(board[i][2].text());
             board[i][2].text('');
-            $(board[i][1]).addClass('stop');
+          } else { // if no value in index 1 but yes in 0
+            board[i][1].text(board[i][2].text());
+            board[i][2].text('');
           }
-          if (board[i][2].text() === board[i][3].text()
-            && board[i][2].text() !== ''
-            && !$(board[i][3]).hasClass('stop')) {
-            board[i][2].text(board[i][2].text() * 2);
-            board[i][3].text('');
-            $(board[i][2]).addClass('stop');
+        }
+        // if value in index 3, value 0 in 2
+        if ($.trim(board[i][3].text()).length > 0 &&
+          $.trim(board[i][2].text()).length === 0) {
+            // value in index 3, value 0 in 2 and 1
+          if ($.trim(board[i][1].text()).length === 0) {
+              // value in index 3, value 0 in 1 2 and 0
+            if ($.trim(board[i][0].text()).length === 0) {
+              board[i][0].text(board[i][3].text());
+              board[i][3].text('');
+              // value in 0
+            } else {
+              board[i][1].text(board[i][3].text());
+              board[i][3].text('');
+            }
           }
-
-      } //  end first for loop
+          board[i][2].text(board[i][3].text());
+          board[i][3].text('');
+        }
+      }
+        // start of checking side by side numbers
+      for (var i = 0; i < 4; i++) {
+        if (board[i][0].text() === board[i][1].text()
+          && board[i][0].text() !== ''
+          && !$(board[i][1]).hasClass('stop')) {
+          board[i][0].text(board[i][0].text() * 2);
+          board[i][1].text('');
+          $(board[i][0]).addClass('stop');
+        }
+        if (board[i][1].text() === board[i][2].text()
+          && board[i][1].text() !== ''
+          && !$(board[i][2]).hasClass('stop')) {
+          board[i][1].text(board[i][1].text() * 2);
+          board[i][2].text('');
+          $(board[i][1]).addClass('stop');
+        }
+        if (board[i][2].text() === board[i][3].text()
+          && board[i][2].text() !== ''
+          && !$(board[i][3]).hasClass('stop')) {
+          board[i][2].text(board[i][2].text() * 2);
+          board[i][3].text('');
+          $(board[i][2]).addClass('stop');
+        }
+      }
+      //condense boxes again
+      for (var i = 0; i < 4; i++) {
+        // if value in index 1
+        if ($.trim(board[i][1].text()).length > 0 &&
+        $.trim(board[i][0].text()).length === 0) {
+          board[i][0].text(board[i][1].text());
+          board[i][1].text('');
+        }
+        // if value in index 2
+        if ($.trim(board[i][2].text()).length > 0 &&
+          $.trim(board[i][1].text()).length === 0) {
+            // if value in index 2 and value 0 in index 0 or 1
+          if ($.trim(board[i][0].text()).length === 0) {
+            board[i][0].text(board[i][2].text());
+            board[i][2].text('');
+          } else { // if no value in index 1 but yes in 0
+            board[i][1].text(board[i][2].text());
+            board[i][2].text('');
+          }
+        }
+        // if value in index 3, value 0 in 2
+        if ($.trim(board[i][3].text()).length > 0 &&
+          $.trim(board[i][2].text()).length === 0) {
+            // value in index 3, value 0 in 2 and 1
+          if ($.trim(board[i][1].text()).length === 0) {
+              // value in index 3, value 0 in 1 2 and 0
+            if ($.trim(board[i][0].text()).length === 0) {
+              board[i][0].text(board[i][3].text());
+              board[i][3].text('');
+              // value in 0
+            } else {
+              board[i][1].text(board[i][3].text());
+              board[i][3].text('');
+            }
+          }
+          board[i][2].text(board[i][3].text());
+          board[i][3].text('');
+        }
+      }
       // run the color function
       color();
       // get a new 2 square
