@@ -239,10 +239,6 @@ $(document).ready(function() {
           board[i][3].text('');
         }
       }
-
-      color();
-      anotherSquare();
-
     //  end Keyleft Code Begin KeyUp Code
     } else if (keyDirection === 38) {
       for (var i = 0; i < 4; i++) {
@@ -341,10 +337,6 @@ $(document).ready(function() {
           board[3][i].text('');
         }
       }
-
-      color();
-      anotherSquare();
-
     //  end KeyUp Code Beinning KeyRight Code
     } else if (keyDirection === 39) {
       for (var i = 0; i < 4; i++) {
@@ -434,8 +426,6 @@ $(document).ready(function() {
           board[i][0].text('');
         }
       }
-      color(); // run the color function
-      anotherSquare();
       // end of KeyRight, Beginning KeyDown
     } else if (keyDirection === 40) {
       for (var i = 0; i < 4; i++) {
@@ -525,10 +515,9 @@ $(document).ready(function() {
           board[0][i].text('');
         }
       }
-      color(); // run the color function
-      anotherSquare();
     } // end of keyDown
-
+    color();
+    anotherSquare();
     function noColumns() {
       for (var i = 0; i < 4; i++) {
         if (board[0][i].text() === board[1][i].text() ||
