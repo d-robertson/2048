@@ -32,11 +32,8 @@ $(document).ready(function() {
     board[c][d].addClass('two');
   }
 
-
-
-
   function boardFull() {
-    if(
+    if (
       $.trim(board[0][0].text()).length > 0 &&
       $.trim(board[0][1].text()).length > 0 &&
       $.trim(board[0][2].text()).length > 0 &&
@@ -60,7 +57,7 @@ $(document).ready(function() {
   }
 
   function anotherSquare() {
-    if(boardFull()) return;
+    if (boardFull()) return;
 
     do {
       var row = Math.floor(Math.random() * 4);
@@ -140,9 +137,10 @@ $(document).ready(function() {
     }
     // get key direction
     var keyDirection = (e.keyCode);
+
     // KeyLeft Code
     if (keyDirection === 37) {
-      //Condense Boxes
+      // Condense Boxes
       for (var i = 0; i < 4; i++) {
         // if value in index 1
         if ($.trim(board[i][1].text()).length > 0 &&
@@ -181,7 +179,8 @@ $(document).ready(function() {
           board[i][3].text('');
         }
       }
-        // start of checking side by side numbers
+
+      // start of checking side by side numbers
       for (var i = 0; i < 4; i++) {
         if (board[i][0].text() === board[i][1].text()
           && board[i][0].text() !== ''
@@ -198,24 +197,23 @@ $(document).ready(function() {
           $(board[i][1]).addClass('stop');
         }
         if (board[i][2].text() === board[i][3].text()
-          && board[i][2].text() !== ''
-          && !$(board[i][3]).hasClass('stop')) {
+        && board[i][2].text() !== ''
+        && !$(board[i][3]).hasClass('stop')) {
           board[i][2].text(board[i][2].text() * 2);
           board[i][3].text('');
           $(board[i][2]).addClass('stop');
         }
       }
-      //condense boxes again
+
+      // condense boxes again
       for (var i = 0; i < 4; i++) {
-        // if value in index 1
         if ($.trim(board[i][1].text()).length > 0 &&
         $.trim(board[i][0].text()).length === 0) {
           board[i][0].text(board[i][1].text());
           board[i][1].text('');
         }
-        // if value in index 2
         if ($.trim(board[i][2].text()).length > 0 &&
-          $.trim(board[i][1].text()).length === 0) {
+        $.trim(board[i][1].text()).length === 0) {
             // if value in index 2 and value 0 in index 0 or 1
           if ($.trim(board[i][0].text()).length === 0) {
             board[i][0].text(board[i][2].text());
@@ -225,16 +223,12 @@ $(document).ready(function() {
             board[i][2].text('');
           }
         }
-        // if value in index 3, value 0 in 2
         if ($.trim(board[i][3].text()).length > 0 &&
-          $.trim(board[i][2].text()).length === 0) {
-            // value in index 3, value 0 in 2 and 1
+        $.trim(board[i][2].text()).length === 0) {
           if ($.trim(board[i][1].text()).length === 0) {
-              // value in index 3, value 0 in 1 2 and 0
             if ($.trim(board[i][0].text()).length === 0) {
               board[i][0].text(board[i][3].text());
               board[i][3].text('');
-              // value in 0
             } else {
               board[i][1].text(board[i][3].text());
               board[i][3].text('');
@@ -244,10 +238,10 @@ $(document).ready(function() {
           board[i][3].text('');
         }
       }
-      // run the color function
+
       color();
-      // get a new 2 square
       anotherSquare();
+
     //  end Keyleft Code Begin KeyUp Code
     } else if (keyDirection === 38) {
       for (var i = 0; i < 4; i++) {
@@ -286,7 +280,7 @@ $(document).ready(function() {
         }
       }
 
-        // start of checking side by side numbers
+      // start of checking side by side numbers
       for (var i = 0; i < 4; i++) {
         if (board[0][i].text() === board[1][i].text()
           && board[0][i].text() !== ''
@@ -346,8 +340,10 @@ $(document).ready(function() {
           board[3][i].text('');
         }
       }
-      color(); // run the color function
+
+      color();
       anotherSquare();
+
     //  end KeyUp Code Beinning KeyRight Code
     } else if (keyDirection === 39) {
       for (var i = 0; i < 4; i++) {
@@ -405,7 +401,7 @@ $(document).ready(function() {
           (board[i][1]).addClass('stop');
         }
       }
-      //condense again
+      // condense again
       for (var i = 0; i < 4; i++) {
         if ($.trim(board[i][2].text()).length > 0 &&
         $.trim(board[i][3].text()).length === 0) {
@@ -496,7 +492,7 @@ $(document).ready(function() {
           $(board[1][i]).addClass('stop');
         }
       }
-      //condense again
+      // condense again
       for (var i = 0; i < 4; i++) {
         if ($.trim(board[2][i].text()).length > 0 &&
           $.trim(board[3][i].text()).length === 0) {
@@ -532,23 +528,23 @@ $(document).ready(function() {
       anotherSquare();
     } // end of keyDown
 
-      function noColumns() {
-      for (var j = 0; j < 4; j++){
-        if(board[0][j].text() === board[1][j].text() ||
-          board[1][j].text() === board[2][j].text() ||
-          board[2][j].text() === board[3][j].text()){
-            return false;
+    function noColumns() {
+      for (var i = 0; i < 4; i++) {
+        if (board[0][i].text() === board[1][i].text() ||
+        board[1][i].text() === board[2][i].text() ||
+        board[2][i].text() === board[3][i].text()) {
+          return false;
         }
       }
       return true;
     }
 
-    function noRows(){
-      for (var i = 0; i < 4; i++){
-        if(board[i][0].text() === board[i][1].text() ||
-          board[i][1].text() === board[i][2].text() ||
-          board[i][2].text() === board[i][3].text()){
-            return false;
+    function noRows() {
+      for (var i = 0; i < 4; i++) {
+        if (board[i][0].text() === board[i][1].text() ||
+        board[i][1].text() === board[i][2].text() ||
+        board[i][2].text() === board[i][3].text()) {
+          return false;
         }
       }
       return true;
@@ -556,17 +552,15 @@ $(document).ready(function() {
 
     function checkGameOver() {
       if (boardFull() && noRows() && noColumns()) {
-          alert('There are no more moves!  Try Again!');
-          startingValues();
-          startGame();
-        }
+        alert('There are no more moves!  Try Again!');
+        startingValues();
+        startGame();
       }
+    }
 
-
-  checkGameOver();
-
-
+    checkGameOver();
   }); // end of click event listener
+
   $('#reset').click(function() {
     startingValues();
     startGame();
