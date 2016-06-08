@@ -518,6 +518,7 @@ $(document).ready(function() {
     } // end of keyDown
     color();
     anotherSquare();
+
     function noColumns() {
       for (var i = 0; i < 4; i++) {
         if (board[0][i].text() === board[1][i].text() ||
@@ -543,10 +544,10 @@ $(document).ready(function() {
     function checkGameOver() {
       if (boardFull() && noRows() && noColumns()) {
         swal({
-        title: 'There are no more moves!',
-        text: 'Try again!',
-        closeOnConfirm: true },
-        function(isConfirm){
+          title: 'There are no more moves!',
+          text: 'Try again!',
+          closeOnConfirm: true },
+        function(isConfirm) {
           if (isConfirm) {
             startingValues();
             startGame();
