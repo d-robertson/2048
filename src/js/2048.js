@@ -13,8 +13,8 @@ $(document).ready(function() {
     for (var y = 0; y < 4; y++) {
       for (var z = 0; z < 4; z++) {
         board[y][z].text('');
-        board[y][z].removeClass('stop two four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
-        board[y][z].addClass('default');
+        board[y][z].removeClass();
+        board[y][z].addClass('default square');
       }
     }
   }
@@ -64,11 +64,12 @@ $(document).ready(function() {
   }
 
   function anotherSquare() {
+    if(boardFull()) return;
     do {
       var row = Math.floor(Math.random() * 4);
       var col = Math.floor(Math.random() * 4);
     }
-    while ($.trim(board[row][col].text()).length > 0 && !boardFull());
+    while ($.trim(board[row][col].text()).length > 0);
     board[row][col].text('2');
     $(board[row][col]).removeClass('default');
     $(board[row][col]).addClass('two');
@@ -78,52 +79,52 @@ $(document).ready(function() {
     for (var b = 0; b < 4; b++) {
       for (var c = 0; c < 4; c++) {
         if ($.trim(board[b][c].text()).length === 0) {
-          $(board[b][c]).addClass('default');
-          $(board[b][c]).removeClass('two four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('default square');
         }
         if (board[b][c].text() === '2') {
-          $(board[b][c]).addClass('two');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('two square');
         }
         if (board[b][c].text() === '4') {
-          $(board[b][c]).addClass('four');
-          $(board[b][c]).removeClass('default eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('four square');
         }
         if (board[b][c].text() === '8') {
-          $(board[b][c]).addClass('eight');
-          $(board[b][c]).removeClass('default four sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('eight square');
         }
         if (board[b][c].text() === '16') {
-          $(board[b][c]).addClass('sixteen');
-          $(board[b][c]).removeClass('default four eight thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('sixteen square');
         }
         if (board[b][c].text() === '32') {
-          $(board[b][c]).addClass('thirty-two');
-          $(board[b][c]).removeClass('default four eight sixteen sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('thirty-two square');
         }
         if (board[b][c].text() === '64') {
-          $(board[b][c]).addClass('sixty-four');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two one-twenty-eight two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('sixty-four square');
         }
         if (board[b][c].text() === '128') {
-          $(board[b][c]).addClass('one-twenty-eight');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two sixty-four two-fifty-six five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('one-twenty-eight square');
         }
         if (board[b][c].text() === '256') {
-          $(board[b][c]).addClass('two-fifty-six');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two sixty-four one-twenty-eight five-twelve ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('two-fifty-six square');
         }
         if (board[b][c].text() === '512') {
-          $(board[b][c]).addClass('five-twelve');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six ten-twenty-four twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('five-twelve square');
         }
         if (board[b][c].text() === '1024') {
-          $(board[b][c]).addClass('ten-twenty-four');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve twenty-fourty-eight');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('ten-twenty-four square');
         }
         if (board[b][c].text() === '2048') {
-          $(board[b][c]).addClass('twenty-fourty-eight');
-          $(board[b][c]).removeClass('default four eight sixteen thirty-two sixty-four one-twenty-eight two-fifty-six five-twelve ten-twenty-four');
+          $(board[b][c]).removeClass();
+          $(board[b][c]).addClass('twenty-fourty-eight square');
         }
       }
     }
@@ -141,7 +142,6 @@ $(document).ready(function() {
     // KeyLeft Code
     if (keyDirection === 37) {
       for (var i = 0; i < 4; i++) {
-        for (var j = 0; j < 4; j++) {
           // if value in index 1
           if ($.trim(board[i][1].text()).length > 0 &&
           $.trim(board[i][0].text()).length === 0) {
@@ -200,7 +200,7 @@ $(document).ready(function() {
             board[i][3].text('');
             $(board[i][2]).addClass('stop');
           }
-        } // end second for loop
+
       } //  end first for loop
       // run the color function
       color();
@@ -209,73 +209,71 @@ $(document).ready(function() {
       //  end Keyleft Code Begin KeyUp Code
     } else if (keyDirection === 38) {
       for (var i = 0; i < 4; i++) {
-        for (var j = 0; j < 4; j++) {
           // if value in index 1
-          if ($.trim(board[1][j].text()).length > 0 &&
-          $.trim(board[0][j].text()).length === 0) {
-            board[0][j].text(board[1][j].text());
-            board[1][j].text('');
+          if ($.trim(board[1][i].text()).length > 0 &&
+          $.trim(board[0][i].text()).length === 0) {
+            board[0][i].text(board[1][i].text());
+            board[1][i].text('');
           }
           // if value in index 2
-          if ($.trim(board[2][j].text()).length > 0 &&
-            $.trim(board[1][j].text()).length === 0) {
+          if ($.trim(board[2][i].text()).length > 0 &&
+            $.trim(board[1][i].text()).length === 0) {
               // if value in index 2 and value 0 in index 0 or 1
-            if ($.trim(board[0][j].text()).length === 0) {
-              board[0][j].text(board[2][j].text());
-              board[2][j].text('');
+            if ($.trim(board[0][i].text()).length === 0) {
+              board[0][i].text(board[2][i].text());
+              board[2][i].text('');
             } else { // if no value in index 1 but yes in 0
-              board[1][j].text(board[2][j].text());
-              board[2][j].text('');
+              board[1][i].text(board[2][i].text());
+              board[2][i].text('');
             }
           }
           // if value in index 3
-          if ($.trim(board[3][j].text()).length > 0 &&
-            $.trim(board[2][j].text()).length === 0) {
+          if ($.trim(board[3][i].text()).length > 0 &&
+            $.trim(board[2][i].text()).length === 0) {
               // value in index 3, value 0 in 2 and 1
-            if ($.trim(board[1][j].text()).length === 0) {
+            if ($.trim(board[1][i].text()).length === 0) {
               // value in index 3, value 0 in 1 2 and 0
-              if ($.trim(board[0][j].text()).length === 0) {
-                board[0][j].text(board[3][j].text());
-                board[3][j].text('');
+              if ($.trim(board[0][i].text()).length === 0) {
+                board[0][i].text(board[3][i].text());
+                board[3][i].text('');
                 // value in 0
               } else {
-                board[1][j].text(board[3][j].text());
-                board[3][j].text('');
+                board[1][i].text(board[3][i].text());
+                board[3][i].text('');
               }
             }
-            board[2][j].text(board[3][j].text());
-            board[3][j].text('');
+            board[2][i].text(board[3][i].text());
+            board[3][i].text('');
           }//
           // start of checking side by side numbers
-          if (board[0][j].text() === board[1][j].text()
-            && board[0][j].text() !== ''
-            && !$(board[1][j]).hasClass('stop')) {
-            board[0][j].text(board[0][j].text() * 2);
-            board[1][j].text('');
-            $(board[0][j]).addClass('stop');
+          if (board[0][i].text() === board[1][i].text()
+            && board[0][i].text() !== ''
+            && !$(board[1][i]).hasClass('stop')) {
+            board[0][i].text(board[0][i].text() * 2);
+            board[1][i].text('');
+            $(board[0][i]).addClass('stop');
           }
-          if (board[1][j].text() === board[2][j].text()
-            && board[1][j].text() !== ''
-            && !$(board[2][j]).hasClass('stop')) {
-            board[1][j].text(board[1][j].text() * 2);
-            board[2][j].text('');
-            $(board[1][j]).addClass('stop');
+          if (board[1][i].text() === board[2][i].text()
+            && board[1][i].text() !== ''
+            && !$(board[2][i]).hasClass('stop')) {
+            board[1][i].text(board[1][i].text() * 2);
+            board[2][i].text('');
+            $(board[1][i]).addClass('stop');
           }
-          if (board[2][j].text() === board[3][j].text()
-            && board[2][j].text() !== ''
-            && !$(board[3][j]).hasClass('stop')) {
-            board[2][j].text(board[2][j].text() * 2);
-            board[3][j].text('');
-            $(board[2][j]).addClass('stop');
+          if (board[2][i].text() === board[3][i].text()
+            && board[2][i].text() !== ''
+            && !$(board[3][i]).hasClass('stop')) {
+            board[2][i].text(board[2][i].text() * 2);
+            board[3][i].text('');
+            $(board[2][i]).addClass('stop');
           }
-        } // end second for loop
+
       } //  end first for loop
       color(); // run the color function
       anotherSquare();
       //  end KeyUp Code Beinning KeyRight Code
     } else if (keyDirection === 39) {
       for (var i = 0; i < 4; i++) {
-        for (var j = 0; j < 4; j++) {
           if ($.trim(board[i][2].text()).length > 0 &&
           $.trim(board[i][3].text()).length === 0) {
             board[i][3].text(board[i][2].text());
@@ -327,66 +325,65 @@ $(document).ready(function() {
             board[i][0].text('');
             (board[i][1]).addClass('stop');
           }
-        } // end second for loop
       } //  end first for loop
       color(); // run the color function
       anotherSquare();
       // end of KeyRight, Beginning KeyDown
     } else if (keyDirection === 40) {
       for (var i = 0; i < 4; i++) {
-        for (var j = 0; j < 4; j++) {
-          if ($.trim(board[2][j].text()).length > 0 &&
-            $.trim(board[3][j].text()).length === 0) {
-            board[3][j].text(board[2][j].text());
-            board[2][j].text('');
+
+          if ($.trim(board[2][i].text()).length > 0 &&
+            $.trim(board[3][i].text()).length === 0) {
+            board[3][i].text(board[2][i].text());
+            board[2][i].text('');
           }
-          if ($.trim(board[1][j].text()).length > 0 &&
-            $.trim(board[2][j].text()).length === 0) {
-            if ($.trim(board[3][j].text()).length === 0) {
-              board[3][j].text(board[1][j].text());
-              board[1][j].text('');
+          if ($.trim(board[1][i].text()).length > 0 &&
+            $.trim(board[2][i].text()).length === 0) {
+            if ($.trim(board[3][i].text()).length === 0) {
+              board[3][i].text(board[1][i].text());
+              board[1][i].text('');
             } else {
-              board[2][j].text(board[1][j].text());
-              board[1][j].text('');
+              board[2][i].text(board[1][i].text());
+              board[1][i].text('');
             }
           }
-          if ($.trim(board[0][j].text()).length > 0 &&
-            $.trim(board[1][j].text()).length === 0) {
-            if ($.trim(board[2][j].text()).length === 0) {
-              if ($.trim(board[3][j].text()).length === 0) {
-                board[3][j].text(board[0][j].text());
-                board[0][j].text('');
+          if ($.trim(board[0][i].text()).length > 0 &&
+            $.trim(board[1][i].text()).length === 0) {
+            if ($.trim(board[2][i].text()).length === 0) {
+              if ($.trim(board[3][i].text()).length === 0) {
+                board[3][i].text(board[0][i].text());
+                board[0][i].text('');
               } else {
-                board[2][j].text(board[0][j].text());
-                board[0][j].text('');
+                board[2][i].text(board[0][i].text());
+                board[0][i].text('');
               }
             }
-            board[1][j].text(board[0][j].text());
-            board[0][j].text('');
+            board[1][i].text(board[0][i].text());
+            board[0][i].text('');
           }
           // start of checking side by side numbers
-          if (board[3][j].text() === board[2][j].text()
-            && board[3][j].text() !== ''
-            && !$(board[2][j]).hasClass('stop')) {
-            board[3][j].text(board[3][j].text() * 2);
-            board[2][j].text('');
-            $(board[3][j]).addClass('stop');
+          if (board[3][i].text() === board[2][i].text()
+            && board[3][i].text() !== ''
+            && !$(board[2][i]).hasClass('stop')) {
+            board[3][i].text(board[3][i].text() * 2);
+            board[2][i].text('');
+            $(board[3][i]).addClass('stop');
           }
-          if (board[2][j].text() === board[1][j].text()
-            && board[2][j].text() !== ''
-            && !$(board[1][j]).hasClass('stop')) {
-            board[2][j].text(board[2][j].text() * 2);
-            board[1][j].text('');
-            $(board[2][j]).addClass('stop');
+          if (board[2][i].text() === board[1][i].text()
+            && board[2][i].text() !== ''
+            && !$(board[1][i]).hasClass('stop')) {
+            board[2][i].text(board[2][i].text() * 2);
+            board[1][i].text('');
+            $(board[2][i]).addClass('stop');
           }
-          if (board[1][j].text() === board[0][j].text()
-            && board[1][j].text() !== ''
-            && !$(board[0][j]).hasClass('stop')) {
-            board[1][j].text(board[1][j].text() * 2);
-            board[0][j].text('');
-            $(board[1][j]).addClass('stop');
+          if (board[1][i].text() === board[0][i].text()
+            && board[1][i].text() !== ''
+            && !$(board[0][i]).hasClass('stop')) {
+            board[1][i].text(board[1][i].text() * 2);
+            board[0][i].text('');
+            $(board[1][i]).addClass('stop');
           }
-        } // end second for loop
+
       } //  end first for loop
       color(); // run the color function
       anotherSquare();
