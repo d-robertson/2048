@@ -30,6 +30,8 @@ h2{
   width: 480px;
   text-align:justify;
   font-family: 'Work Sans', sans-serif;
+  -moz-text-align-last: center; /* Code for Firefox */
+  text-align-last: center;
 }
 
 .foo{
