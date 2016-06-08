@@ -39,12 +39,36 @@ $(document).ready(function() {
 
   startGame();
 
+  function boardFull() {
+    if(
+      $.trim(board[0][0].text()).length > 0 &&
+      $.trim(board[0][1].text()).length > 0 &&
+      $.trim(board[0][2].text()).length > 0 &&
+      $.trim(board[0][3].text()).length > 0 &&
+      $.trim(board[1][0].text()).length > 0 &&
+      $.trim(board[1][1].text()).length > 0 &&
+      $.trim(board[1][2].text()).length > 0 &&
+      $.trim(board[1][3].text()).length > 0 &&
+      $.trim(board[2][0].text()).length > 0 &&
+      $.trim(board[2][1].text()).length > 0 &&
+      $.trim(board[2][2].text()).length > 0 &&
+      $.trim(board[2][3].text()).length > 0 &&
+      $.trim(board[3][0].text()).length > 0 &&
+      $.trim(board[3][1].text()).length > 0 &&
+      $.trim(board[3][2].text()).length > 0 &&
+      $.trim(board[3][3].text()).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function anotherSquare() {
     do {
       var row = Math.floor(Math.random() * 4);
       var col = Math.floor(Math.random() * 4);
     }
-    while ($.trim(board[row][col].text()).length > 0);
+    while ($.trim(board[row][col].text()).length > 0 && !boardFull());
     board[row][col].text('2');
     $(board[row][col]).removeClass('default');
     $(board[row][col]).addClass('two');
@@ -368,27 +392,40 @@ $(document).ready(function() {
       anotherSquare();
     } // end of keyDown
 
-    if (
-      $.trim(board[0][0].text()).length > 0 &&
-      $.trim(board[0][1].text()).length > 0 &&
-      $.trim(board[0][2].text()).length > 0 &&
-      $.trim(board[0][3].text()).length > 0 &&
-      $.trim(board[1][0].text()).length > 0 &&
-      $.trim(board[1][1].text()).length > 0 &&
-      $.trim(board[1][2].text()).length > 0 &&
-      $.trim(board[1][3].text()).length > 0 &&
-      $.trim(board[2][0].text()).length > 0 &&
-      $.trim(board[2][1].text()).length > 0 &&
-      $.trim(board[2][2].text()).length > 0 &&
-      $.trim(board[2][3].text()).length > 0 &&
-      $.trim(board[3][0].text()).length > 0 &&
-      $.trim(board[3][1].text()).length > 0 &&
-      $.trim(board[3][2].text()).length > 0 &&
-      $.trim(board[3][3].text()).length > 0) {
-      alert('The game is over!  Click to play again!');
-      startingValues();
-      startGame();
+      function noColumns() {
+      for (var j = 0; j < 4; j++){
+        if(board[0][j].text() === board[1][j].text() ||
+          board[1][j].text() === board[2][j].text() ||
+          board[2][j].text() === board[3][j].text()){
+            return false;
+        }
+      }
+      return true;
     }
+
+    function noRows(){
+      for (var i = 0; i < 4; i++){
+        if(board[i][0].text() === board[i][1].text() ||
+          board[i][1].text() === board[i][2].text() ||
+          board[i][2].text() === board[i][3].text()){
+            return false;
+        }
+      }
+      return true;
+    }
+
+    function checkGameOver() {
+      if (boardFull() && noRows() && noColumns()) {
+          alert('There are no more moves!  Try Again!');
+          startingValues();
+          startGame();
+        }
+      }
+
+
+  checkGameOver();
+
+
   }); // end of click event listener
   $('#reset').click(function() {
     startingValues();
