@@ -248,185 +248,286 @@ $(document).ready(function() {
       color();
       // get a new 2 square
       anotherSquare();
-      //  end Keyleft Code Begin KeyUp Code
+    //  end Keyleft Code Begin KeyUp Code
     } else if (keyDirection === 38) {
       for (var i = 0; i < 4; i++) {
-          // if value in index 1
-          if ($.trim(board[1][i].text()).length > 0 &&
-          $.trim(board[0][i].text()).length === 0) {
-            board[0][i].text(board[1][i].text());
-            board[1][i].text('');
-          }
-          // if value in index 2
-          if ($.trim(board[2][i].text()).length > 0 &&
-            $.trim(board[1][i].text()).length === 0) {
-              // if value in index 2 and value 0 in index 0 or 1
-            if ($.trim(board[0][i].text()).length === 0) {
-              board[0][i].text(board[2][i].text());
-              board[2][i].text('');
-            } else { // if no value in index 1 but yes in 0
-              board[1][i].text(board[2][i].text());
-              board[2][i].text('');
-            }
-          }
-          // if value in index 3
-          if ($.trim(board[3][i].text()).length > 0 &&
-            $.trim(board[2][i].text()).length === 0) {
-              // value in index 3, value 0 in 2 and 1
-            if ($.trim(board[1][i].text()).length === 0) {
-              // value in index 3, value 0 in 1 2 and 0
-              if ($.trim(board[0][i].text()).length === 0) {
-                board[0][i].text(board[3][i].text());
-                board[3][i].text('');
-                // value in 0
-              } else {
-                board[1][i].text(board[3][i].text());
-                board[3][i].text('');
-              }
-            }
-            board[2][i].text(board[3][i].text());
-            board[3][i].text('');
-          }//
-          // start of checking side by side numbers
-          if (board[0][i].text() === board[1][i].text()
-            && board[0][i].text() !== ''
-            && !$(board[1][i]).hasClass('stop')) {
-            board[0][i].text(board[0][i].text() * 2);
-            board[1][i].text('');
-            $(board[0][i]).addClass('stop');
-          }
-          if (board[1][i].text() === board[2][i].text()
-            && board[1][i].text() !== ''
-            && !$(board[2][i]).hasClass('stop')) {
-            board[1][i].text(board[1][i].text() * 2);
+        if ($.trim(board[1][i].text()).length > 0 &&
+        $.trim(board[0][i].text()).length === 0) {
+          board[0][i].text(board[1][i].text());
+          board[1][i].text('');
+        }
+        if ($.trim(board[2][i].text()).length > 0 &&
+          $.trim(board[1][i].text()).length === 0) {
+            // if value in index 2 and value 0 in index 0 or 1
+          if ($.trim(board[0][i].text()).length === 0) {
+            board[0][i].text(board[2][i].text());
             board[2][i].text('');
-            $(board[1][i]).addClass('stop');
+          } else { // if no value in index 1 but yes in 0
+            board[1][i].text(board[2][i].text());
+            board[2][i].text('');
           }
-          if (board[2][i].text() === board[3][i].text()
-            && board[2][i].text() !== ''
-            && !$(board[3][i]).hasClass('stop')) {
-            board[2][i].text(board[2][i].text() * 2);
-            board[3][i].text('');
-            $(board[2][i]).addClass('stop');
+        }
+        if ($.trim(board[3][i].text()).length > 0 &&
+          $.trim(board[2][i].text()).length === 0) {
+            // value in index 3, value 0 in 2 and 1
+          if ($.trim(board[1][i].text()).length === 0) {
+            // value in index 3, value 0 in 1 2 and 0
+            if ($.trim(board[0][i].text()).length === 0) {
+              board[0][i].text(board[3][i].text());
+              board[3][i].text('');
+              // value in 0
+            } else {
+              board[1][i].text(board[3][i].text());
+              board[3][i].text('');
+            }
           }
+          board[2][i].text(board[3][i].text());
+          board[3][i].text('');
+        }
+      }
 
-      } //  end first for loop
+        // start of checking side by side numbers
+      for (var i = 0; i < 4; i++) {
+        if (board[0][i].text() === board[1][i].text()
+          && board[0][i].text() !== ''
+          && !$(board[1][i]).hasClass('stop')) {
+          board[0][i].text(board[0][i].text() * 2);
+          board[1][i].text('');
+          $(board[0][i]).addClass('stop');
+        }
+        if (board[1][i].text() === board[2][i].text()
+          && board[1][i].text() !== ''
+          && !$(board[2][i]).hasClass('stop')) {
+          board[1][i].text(board[1][i].text() * 2);
+          board[2][i].text('');
+          $(board[1][i]).addClass('stop');
+        }
+        if (board[2][i].text() === board[3][i].text()
+          && board[2][i].text() !== ''
+          && !$(board[3][i]).hasClass('stop')) {
+          board[2][i].text(board[2][i].text() * 2);
+          board[3][i].text('');
+          $(board[2][i]).addClass('stop');
+        }
+      }
+
+      for (var i = 0; i < 4; i++) {
+        if ($.trim(board[1][i].text()).length > 0 &&
+        $.trim(board[0][i].text()).length === 0) {
+          board[0][i].text(board[1][i].text());
+          board[1][i].text('');
+        }
+        if ($.trim(board[2][i].text()).length > 0 &&
+          $.trim(board[1][i].text()).length === 0) {
+            // if value in index 2 and value 0 in index 0 or 1
+          if ($.trim(board[0][i].text()).length === 0) {
+            board[0][i].text(board[2][i].text());
+            board[2][i].text('');
+          } else { // if no value in index 1 but yes in 0
+            board[1][i].text(board[2][i].text());
+            board[2][i].text('');
+          }
+        }
+        if ($.trim(board[3][i].text()).length > 0 &&
+        $.trim(board[2][i].text()).length === 0) {
+          // value in index 3, value 0 in 2 and 1
+          if ($.trim(board[1][i].text()).length === 0) {
+            // value in index 3, value 0 in 1 2 and 0
+            if ($.trim(board[0][i].text()).length === 0) {
+              board[0][i].text(board[3][i].text());
+              board[3][i].text('');
+              // value in 0
+            } else {
+              board[1][i].text(board[3][i].text());
+              board[3][i].text('');
+            }
+          }
+          board[2][i].text(board[3][i].text());
+          board[3][i].text('');
+        }
+      }
       color(); // run the color function
       anotherSquare();
-      //  end KeyUp Code Beinning KeyRight Code
+    //  end KeyUp Code Beinning KeyRight Code
     } else if (keyDirection === 39) {
       for (var i = 0; i < 4; i++) {
-          if ($.trim(board[i][2].text()).length > 0 &&
-          $.trim(board[i][3].text()).length === 0) {
-            board[i][3].text(board[i][2].text());
-            board[i][2].text('');
-          }
-          if ($.trim(board[i][1].text()).length > 0 &&
-            $.trim(board[i][2].text()).length === 0) {
-            if ($.trim(board[i][3].text()).length === 0) {
-              board[i][3].text(board[i][1].text());
-              board[i][1].text('');
-            } else {
-              board[i][2].text(board[i][1].text());
-              board[i][1].text('');
-            }
-          }
-          if ($.trim(board[i][0].text()).length > 0 &&
-            $.trim(board[i][1].text()).length === 0) {
-            if ($.trim(board[i][2].text()).length === 0) {
-              if ($.trim(board[i][3].text()).length === 0) {
-                board[i][3].text(board[i][0].text());
-                board[i][0].text('');
-              } else {
-                board[i][2].text(board[i][0].text());
-                board[i][0].text('');
-              }
-            }
-            board[i][1].text(board[i][0].text());
-            board[i][0].text('');
-          }
-          // start of checking side by side numbers
-          if (board[i][3].text() === board[i][2].text()
-            && board[i][3].text() !== ''
-            && !$(board[i][2]).hasClass('stop')) {
-            board[i][3].text(board[i][3].text() * 2);
-            board[i][2].text('');
-            $(board[i][3]).addClass('stop');
-          }
-          if (board[i][2].text() === board[i][1].text()
-            && board[i][2].text() !== ''
-            && !$(board[i][1]).hasClass('stop')) {
-            board[i][2].text(board[i][2].text() * 2);
+        if ($.trim(board[i][2].text()).length > 0 &&
+        $.trim(board[i][3].text()).length === 0) {
+          board[i][3].text(board[i][2].text());
+          board[i][2].text('');
+        }
+        if ($.trim(board[i][1].text()).length > 0 &&
+          $.trim(board[i][2].text()).length === 0) {
+          if ($.trim(board[i][3].text()).length === 0) {
+            board[i][3].text(board[i][1].text());
             board[i][1].text('');
-            $(board[i][2]).addClass('stop');
+          } else {
+            board[i][2].text(board[i][1].text());
+            board[i][1].text('');
           }
-          if (board[i][1].text() === board[i][0].text()
-            && board[i][1].text() !== ''
-            && !$(board[i][0]).hasClass('stop')) {
-            board[i][1].text(board[i][1].text() * 2);
-            board[i][0].text('');
-            (board[i][1]).addClass('stop');
+        }
+        if ($.trim(board[i][0].text()).length > 0 &&
+          $.trim(board[i][1].text()).length === 0) {
+          if ($.trim(board[i][2].text()).length === 0) {
+            if ($.trim(board[i][3].text()).length === 0) {
+              board[i][3].text(board[i][0].text());
+              board[i][0].text('');
+            } else {
+              board[i][2].text(board[i][0].text());
+              board[i][0].text('');
+            }
           }
-      } //  end first for loop
+          board[i][1].text(board[i][0].text());
+          board[i][0].text('');
+        }
+      }
+        // start of checking side by side numbers
+      for (var i = 0; i < 4; i++) {
+        if (board[i][3].text() === board[i][2].text()
+          && board[i][3].text() !== ''
+          && !$(board[i][2]).hasClass('stop')) {
+          board[i][3].text(board[i][3].text() * 2);
+          board[i][2].text('');
+          $(board[i][3]).addClass('stop');
+        }
+        if (board[i][2].text() === board[i][1].text()
+          && board[i][2].text() !== ''
+          && !$(board[i][1]).hasClass('stop')) {
+          board[i][2].text(board[i][2].text() * 2);
+          board[i][1].text('');
+          $(board[i][2]).addClass('stop');
+        }
+        if (board[i][1].text() === board[i][0].text()
+          && board[i][1].text() !== ''
+          && !$(board[i][0]).hasClass('stop')) {
+          board[i][1].text(board[i][1].text() * 2);
+          board[i][0].text('');
+          (board[i][1]).addClass('stop');
+        }
+      }
+      //condense again
+      for (var i = 0; i < 4; i++) {
+        if ($.trim(board[i][2].text()).length > 0 &&
+        $.trim(board[i][3].text()).length === 0) {
+          board[i][3].text(board[i][2].text());
+          board[i][2].text('');
+        }
+        if ($.trim(board[i][1].text()).length > 0 &&
+          $.trim(board[i][2].text()).length === 0) {
+          if ($.trim(board[i][3].text()).length === 0) {
+            board[i][3].text(board[i][1].text());
+            board[i][1].text('');
+          } else {
+            board[i][2].text(board[i][1].text());
+            board[i][1].text('');
+          }
+        }
+        if ($.trim(board[i][0].text()).length > 0 &&
+          $.trim(board[i][1].text()).length === 0) {
+          if ($.trim(board[i][2].text()).length === 0) {
+            if ($.trim(board[i][3].text()).length === 0) {
+              board[i][3].text(board[i][0].text());
+              board[i][0].text('');
+            } else {
+              board[i][2].text(board[i][0].text());
+              board[i][0].text('');
+            }
+          }
+          board[i][1].text(board[i][0].text());
+          board[i][0].text('');
+        }
+      }
       color(); // run the color function
       anotherSquare();
       // end of KeyRight, Beginning KeyDown
     } else if (keyDirection === 40) {
       for (var i = 0; i < 4; i++) {
-
-          if ($.trim(board[2][i].text()).length > 0 &&
-            $.trim(board[3][i].text()).length === 0) {
-            board[3][i].text(board[2][i].text());
-            board[2][i].text('');
-          }
-          if ($.trim(board[1][i].text()).length > 0 &&
-            $.trim(board[2][i].text()).length === 0) {
-            if ($.trim(board[3][i].text()).length === 0) {
-              board[3][i].text(board[1][i].text());
-              board[1][i].text('');
-            } else {
-              board[2][i].text(board[1][i].text());
-              board[1][i].text('');
-            }
-          }
-          if ($.trim(board[0][i].text()).length > 0 &&
-            $.trim(board[1][i].text()).length === 0) {
-            if ($.trim(board[2][i].text()).length === 0) {
-              if ($.trim(board[3][i].text()).length === 0) {
-                board[3][i].text(board[0][i].text());
-                board[0][i].text('');
-              } else {
-                board[2][i].text(board[0][i].text());
-                board[0][i].text('');
-              }
-            }
-            board[1][i].text(board[0][i].text());
-            board[0][i].text('');
-          }
-          // start of checking side by side numbers
-          if (board[3][i].text() === board[2][i].text()
-            && board[3][i].text() !== ''
-            && !$(board[2][i]).hasClass('stop')) {
-            board[3][i].text(board[3][i].text() * 2);
-            board[2][i].text('');
-            $(board[3][i]).addClass('stop');
-          }
-          if (board[2][i].text() === board[1][i].text()
-            && board[2][i].text() !== ''
-            && !$(board[1][i]).hasClass('stop')) {
-            board[2][i].text(board[2][i].text() * 2);
+        if ($.trim(board[2][i].text()).length > 0 &&
+          $.trim(board[3][i].text()).length === 0) {
+          board[3][i].text(board[2][i].text());
+          board[2][i].text('');
+        }
+        if ($.trim(board[1][i].text()).length > 0 &&
+          $.trim(board[2][i].text()).length === 0) {
+          if ($.trim(board[3][i].text()).length === 0) {
+            board[3][i].text(board[1][i].text());
             board[1][i].text('');
-            $(board[2][i]).addClass('stop');
+          } else {
+            board[2][i].text(board[1][i].text());
+            board[1][i].text('');
           }
-          if (board[1][i].text() === board[0][i].text()
-            && board[1][i].text() !== ''
-            && !$(board[0][i]).hasClass('stop')) {
-            board[1][i].text(board[1][i].text() * 2);
-            board[0][i].text('');
-            $(board[1][i]).addClass('stop');
+        }
+        if ($.trim(board[0][i].text()).length > 0 &&
+          $.trim(board[1][i].text()).length === 0) {
+          if ($.trim(board[2][i].text()).length === 0) {
+            if ($.trim(board[3][i].text()).length === 0) {
+              board[3][i].text(board[0][i].text());
+              board[0][i].text('');
+            } else {
+              board[2][i].text(board[0][i].text());
+              board[0][i].text('');
+            }
           }
-
-      } //  end first for loop
+          board[1][i].text(board[0][i].text());
+          board[0][i].text('');
+        }
+      }
+        // start of checking side by side numbers
+      for (var i = 0; i < 4; i++) {
+        if (board[3][i].text() === board[2][i].text()
+          && board[3][i].text() !== ''
+          && !$(board[2][i]).hasClass('stop')) {
+          board[3][i].text(board[3][i].text() * 2);
+          board[2][i].text('');
+          $(board[3][i]).addClass('stop');
+        }
+        if (board[2][i].text() === board[1][i].text()
+          && board[2][i].text() !== ''
+          && !$(board[1][i]).hasClass('stop')) {
+          board[2][i].text(board[2][i].text() * 2);
+          board[1][i].text('');
+          $(board[2][i]).addClass('stop');
+        }
+        if (board[1][i].text() === board[0][i].text()
+          && board[1][i].text() !== ''
+          && !$(board[0][i]).hasClass('stop')) {
+          board[1][i].text(board[1][i].text() * 2);
+          board[0][i].text('');
+          $(board[1][i]).addClass('stop');
+        }
+      }
+      //condense again
+      for (var i = 0; i < 4; i++) {
+        if ($.trim(board[2][i].text()).length > 0 &&
+          $.trim(board[3][i].text()).length === 0) {
+          board[3][i].text(board[2][i].text());
+          board[2][i].text('');
+        }
+        if ($.trim(board[1][i].text()).length > 0 &&
+          $.trim(board[2][i].text()).length === 0) {
+          if ($.trim(board[3][i].text()).length === 0) {
+            board[3][i].text(board[1][i].text());
+            board[1][i].text('');
+          } else {
+            board[2][i].text(board[1][i].text());
+            board[1][i].text('');
+          }
+        }
+        if ($.trim(board[0][i].text()).length > 0 &&
+          $.trim(board[1][i].text()).length === 0) {
+          if ($.trim(board[2][i].text()).length === 0) {
+            if ($.trim(board[3][i].text()).length === 0) {
+              board[3][i].text(board[0][i].text());
+              board[0][i].text('');
+            } else {
+              board[2][i].text(board[0][i].text());
+              board[0][i].text('');
+            }
+          }
+          board[1][i].text(board[0][i].text());
+          board[0][i].text('');
+        }
+      }
       color(); // run the color function
       anotherSquare();
     } // end of keyDown
