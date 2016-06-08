@@ -270,11 +270,53 @@ function keyDown() {
     }
   }
 }
+
+    function noColumns() {
+      for (var i = 0; i < 4; i++) {
+        if (board[0][i].text() === board[1][i].text() ||
+        board[1][i].text() === board[2][i].text() ||
+        board[2][i].text() === board[3][i].text()) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function noRows() {
+      for (var i = 0; i < 4; i++) {
+        if (board[i][0].text() === board[i][1].text() ||
+        board[i][1].text() === board[i][2].text() ||
+        board[i][2].text() === board[i][3].text()) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function checkGameOver() {
+      if (boardFull() && noRows() && noColumns()) {
+        swal({
+          title: 'There are no more moves!',
+          text: 'Try again!',
+          closeOnConfirm: true },
+        function(isConfirm) {
+          if (isConfirm) {
+            startingValues();
+            startGame();
+          }
+        });
+      }
+    }
+
   // Start Running the Game
   startingValues();
+
   startGame();
+
   // Key listener
   $(document).keydown(function(e) {
+
+    //keep page from scrolling when hit the arrow keys
     e.preventDefault();
 
     // remove any 'stop' classes
@@ -283,12 +325,15 @@ function keyDown() {
         $(board[i][j]).removeClass('stop');
       }
     }
+
     // get key direction
     var keyDirection = (e.keyCode);
+
     // KeyLeft Code
     if (keyDirection === 37) {
-      // Condense Boxes
+
       keyLeft();
+
       // start of checking side by side numbers
       for (var i = 0; i < 4; i++) {
         if (board[i][0].text() === board[i][1].text()
@@ -313,11 +358,14 @@ function keyDown() {
           $(board[i][2]).addClass('stop');
         }
       }
-      // condense boxes again
+
       keyLeft();
+
     //  end Keyleft Code Begin KeyUp Code
     } else if (keyDirection === 38) {
+
       keyUp();
+
       // start of checking side by side numbers
       for (var i = 0; i < 4; i++) {
         if (board[0][i].text() === board[1][i].text()
@@ -342,6 +390,7 @@ function keyDown() {
           $(board[2][i]).addClass('stop');
         }
       }
+
       keyUp();
 
     //  end KeyUp Code Beinning KeyRight Code
@@ -409,51 +458,27 @@ function keyDown() {
       keyDown();
     }
 
+    //  change divs background color to match value
     color();
-    anotherSquare();
 
-    function noColumns() {
-      for (var i = 0; i < 4; i++) {
-        if (board[0][i].text() === board[1][i].text() ||
-        board[1][i].text() === board[2][i].text() ||
-        board[2][i].text() === board[3][i].text()) {
-          return false;
-        }
-      }
-      return true;
+    // add another square to the board
+    if(keyDirection === 37 ||
+      keyDirection ===38 ||
+      keyDirection === 39 ||
+      keyDirection === 40){
+      anotherSquare();
     }
 
-    function noRows() {
-      for (var i = 0; i < 4; i++) {
-        if (board[i][0].text() === board[i][1].text() ||
-        board[i][1].text() === board[i][2].text() ||
-        board[i][2].text() === board[i][3].text()) {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    function checkGameOver() {
-      if (boardFull() && noRows() && noColumns()) {
-        swal({
-          title: 'There are no more moves!',
-          text: 'Try again!',
-          closeOnConfirm: true },
-        function(isConfirm) {
-          if (isConfirm) {
-            startingValues();
-            startGame();
-          }
-        });
-      }
-    }
 
     checkGameOver();
-  }); // end of click event listener
+  //  end of click event listener
+  });
 
+  //  reset game board
   $('#reset').click(function() {
     startingValues();
     startGame();
   });
-}); // end of document ready
+
+//  end of document ready
+});
