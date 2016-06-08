@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   var board = [
     [$('#a'), $('#b'), $('#c'), $('#d')],
     [$('#e'), $('#f'), $('#g'), $('#h')],
@@ -131,6 +130,7 @@ $(document).ready(function() {
   // Key listener
   $(document).keydown(function(e) {
     e.preventDefault();
+
     // remove any 'stop' classes
     for (var i = 0; i < 4; i ++) {
       for (var j = 0; j < 4; j++) {
@@ -553,9 +553,16 @@ $(document).ready(function() {
 
     function checkGameOver() {
       if (boardFull() && noRows() && noColumns()) {
-        swal('There are no more moves!  Try Again!');
-        startingValues();
-        startGame();
+        swal({
+        title: 'There are no more moves!',
+        text: 'Try again!',
+        closeOnConfirm: true },
+        function(isConfirm){
+          if (isConfirm) {
+            startingValues();
+            startGame();
+          }
+        });
       }
     }
 
