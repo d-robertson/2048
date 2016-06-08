@@ -6,6 +6,9 @@ $(document).ready(function() {
     [$('#m'), $('#n'), $('#o'), $('#p')]
   ];
 
+  var count = 0;
+  var add = 0;
+
   // set all starting values to ''
   function startingValues() {
     for (var y = 0; y < 4; y++) {
@@ -341,6 +344,9 @@ $(document).ready(function() {
         if (board[i][0].text() === board[i][1].text()
           && board[i][0].text() !== ''
           && !$(board[i][1]).hasClass('stop')) {
+          add = board[i][0].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[i][0].text(board[i][0].text() * 2);
           board[i][1].text('');
           $(board[i][0]).addClass('stop');
@@ -348,6 +354,9 @@ $(document).ready(function() {
         if (board[i][1].text() === board[i][2].text()
           && board[i][1].text() !== ''
           && !$(board[i][2]).hasClass('stop')) {
+          add = board[i][1].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[i][1].text(board[i][1].text() * 2);
           board[i][2].text('');
           $(board[i][1]).addClass('stop');
@@ -355,6 +364,9 @@ $(document).ready(function() {
         if (board[i][2].text() === board[i][3].text()
         && board[i][2].text() !== ''
         && !$(board[i][3]).hasClass('stop')) {
+          add = board[i][2].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[i][2].text(board[i][2].text() * 2);
           board[i][3].text('');
           $(board[i][2]).addClass('stop');
@@ -372,6 +384,9 @@ $(document).ready(function() {
         if (board[0][i].text() === board[1][i].text()
           && board[0][i].text() !== ''
           && !$(board[1][i]).hasClass('stop')) {
+          add = board[0][i].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[0][i].text(board[0][i].text() * 2);
           board[1][i].text('');
           $(board[0][i]).addClass('stop');
@@ -379,6 +394,9 @@ $(document).ready(function() {
         if (board[1][i].text() === board[2][i].text()
           && board[1][i].text() !== ''
           && !$(board[2][i]).hasClass('stop')) {
+          add = board[1][i].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[1][i].text(board[1][i].text() * 2);
           board[2][i].text('');
           $(board[1][i]).addClass('stop');
@@ -386,6 +404,9 @@ $(document).ready(function() {
         if (board[2][i].text() === board[3][i].text()
           && board[2][i].text() !== ''
           && !$(board[3][i]).hasClass('stop')) {
+          add = board[2][i].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[2][i].text(board[2][i].text() * 2);
           board[3][i].text('');
           $(board[2][i]).addClass('stop');
@@ -403,6 +424,9 @@ $(document).ready(function() {
         if (board[i][3].text() === board[i][2].text()
           && board[i][3].text() !== ''
           && !$(board[i][2]).hasClass('stop')) {
+          add = board[i][3].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[i][3].text(board[i][3].text() * 2);
           board[i][2].text('');
           $(board[i][3]).addClass('stop');
@@ -410,6 +434,9 @@ $(document).ready(function() {
         if (board[i][2].text() === board[i][1].text()
           && board[i][2].text() !== ''
           && !$(board[i][1]).hasClass('stop')) {
+          add = board[i][2].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[i][2].text(board[i][2].text() * 2);
           board[i][1].text('');
           $(board[i][2]).addClass('stop');
@@ -417,6 +444,9 @@ $(document).ready(function() {
         if (board[i][1].text() === board[i][0].text()
           && board[i][1].text() !== ''
           && !$(board[i][0]).hasClass('stop')) {
+          add = board[1][0].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[i][1].text(board[i][1].text() * 2);
           board[i][0].text('');
           (board[i][1]).addClass('stop');
@@ -434,6 +464,9 @@ $(document).ready(function() {
         if (board[3][i].text() === board[2][i].text()
           && board[3][i].text() !== ''
           && !$(board[2][i]).hasClass('stop')) {
+          add = board[3][i].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[3][i].text(board[3][i].text() * 2);
           board[2][i].text('');
           $(board[3][i]).addClass('stop');
@@ -441,6 +474,9 @@ $(document).ready(function() {
         if (board[2][i].text() === board[1][i].text()
           && board[2][i].text() !== ''
           && !$(board[1][i]).hasClass('stop')) {
+          add = board[2][i].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[2][i].text(board[2][i].text() * 2);
           board[1][i].text('');
           $(board[2][i]).addClass('stop');
@@ -448,6 +484,9 @@ $(document).ready(function() {
         if (board[1][i].text() === board[0][i].text()
           && board[1][i].text() !== ''
           && !$(board[0][i]).hasClass('stop')) {
+          add = board[1][i].text() * 2;
+          count = count + add;
+          $('#count').text(count);
           board[1][i].text(board[1][i].text() * 2);
           board[0][i].text('');
           $(board[1][i]).addClass('stop');
