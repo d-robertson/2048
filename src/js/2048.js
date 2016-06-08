@@ -57,10 +57,14 @@ $(document).ready(function() {
   }
 
   function anotherSquare() {
-    if (boardFull()) return;
+    if (boardFull()) {
+      return;
+    }
+    var row;
+    var col;
     do {
-      var row = Math.floor(Math.random() * 4);
-      var col = Math.floor(Math.random() * 4);
+      row = Math.floor(Math.random() * 4);
+      col = Math.floor(Math.random() * 4);
     }
     while ($.trim(board[row][col].text()).length > 0);
     board[row][col].text('2');
