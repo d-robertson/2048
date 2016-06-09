@@ -315,7 +315,7 @@ $(document).ready(function() {
     }
   }
 
-  function check(){
+  function check() {
     if (board[0][0].text() === '2048' ||
       board[0][1].text() === '2048' ||
       board[0][2].text() === '2048' ||
@@ -332,10 +332,10 @@ $(document).ready(function() {
       board[3][1].text() === '2048' ||
       board[3][2].text() === '2048' ||
       board[3][3].text() === '2048') {
-        swal({
-          title:'You got 2048!',
-          text:'Click to keep playing'
-        });
+      swal({
+        title: 'You got 2048!',
+        text: 'Click to keep playing'
+      });
     }
   }
 
