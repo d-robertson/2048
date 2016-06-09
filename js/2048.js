@@ -315,6 +315,30 @@ $(document).ready(function() {
     }
   }
 
+  function check(){
+    if (board[0][0].text() === '2048' ||
+      board[0][1].text() === '2048' ||
+      board[0][2].text() === '2048' ||
+      board[0][3].text() === '2048' ||
+      board[1][0].text() === '2048' ||
+      board[1][1].text() === '2048' ||
+      board[1][2].text() === '2048' ||
+      board[1][3].text() === '2048' ||
+      board[2][0].text() === '2048' ||
+      board[2][1].text() === '2048' ||
+      board[2][2].text() === '2048' ||
+      board[2][3].text() === '2048' ||
+      board[3][0].text() === '2048' ||
+      board[3][1].text() === '2048' ||
+      board[3][2].text() === '2048' ||
+      board[3][3].text() === '2048') {
+        swal({
+          title:'You got 2048!',
+          text:'Click to keep playing'
+        });
+    }
+  }
+
   // Start Running the Game
   startingValues();
 
@@ -507,8 +531,9 @@ $(document).ready(function() {
       anotherSquare();
     }
 
-
+    check();
     checkGameOver();
+
   //  end of click event listener
   });
 
